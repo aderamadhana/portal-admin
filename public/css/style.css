@@ -1,0 +1,277 @@
+:root{
+      --primary:#2e5bff;
+      --primary-dark:#2749d9;
+      --bg-left:linear-gradient(135deg,#1b1f3b,#3d4e81);
+      --radius-md:16px;
+      --text-main:#1f2937;
+      --text-muted:#6b7280;
+    }
+
+    *{box-sizing:border-box;}
+
+    body{
+      margin:0;
+      padding:0;
+      height:100vh;
+      font-family:"Poppins",sans-serif;
+      background:#f3f6fc;
+      display:flex;
+      align-items:stretch;
+    }
+
+    /* PANEL KIRI (WELCOME) */
+    .welcome-panel{
+      background:var(--bg-left);
+      color:#ffffff;
+      height:100vh;
+      padding:32px 28px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      position:sticky;
+      top:0;
+    }
+
+    .user-box{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:24px;
+    }
+    .user-photo{
+      width:46px;
+      height:46px;
+      border-radius:50%;
+      object-fit:cover;
+      border:2px solid rgba(255,255,255,0.4);
+    }
+    .user-name{
+      font-size:15px;
+      font-weight:600;
+    }
+    .user-role{
+      font-size:12px;
+      opacity:.85;
+      color:#dbe4ff;
+    }
+
+    .welcome-title{
+      font-size:32px;
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:.15em;
+    }
+    .welcome-subtitle{
+      margin-top:14px;
+      font-size:14px;
+      max-width:330px;
+      opacity:.95;
+    }
+
+    .welcome-footer{
+      margin-top:auto;
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      font-size:12px;
+    }
+    .logout-link{
+      color:#000000;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      font-size:13px;
+    }
+    .logout-link i{font-size:15px;}
+    .logout-link:hover{color:grey;}
+    .footer-copy{
+      opacity:.75;
+      color:#e5e5e5;
+    }
+
+    /* PANEL KANAN */
+    .apps-wrapper{
+      height:100vh;
+      overflow-y:auto;
+      padding:0;                /* supaya header bisa full bener-bener */
+      background:#ffffff;
+    }
+
+    /* HEADER FULL-WIDTH STICKY */
+    .apps-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:#ffffff;
+      box-shadow:0 2px 6px rgba(15,23,42,0.08);
+      padding:10px 24px;
+    }
+    .apps-header-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .apps-header-left{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .apps-header-icon{
+      width:32px;
+      height:32px;
+      border-radius:10px;
+      background:rgba(46,91,255,0.08);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--primary);
+      font-size:17px;
+    }
+    .apps-header-title{
+      font-size:16px;
+      font-weight:600;
+      color:var(--text-main);
+      line-height:1.2;
+    }
+    .apps-header-sub{
+      font-size:12px;
+      color:var(--text-muted);
+    }
+    .apps-header-status{
+      font-size:11px;
+      color:var(--text-muted);
+      display:flex;
+      align-items:center;
+      gap:6px;
+      white-space:nowrap;
+    }
+    .status-dot{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:#22c55e;
+      box-shadow:0 0 8px rgba(34,197,94,0.7);
+    }
+
+    /* AREA GRID APLIKASI */
+    .apps-body{
+      padding:16px 24px 24px;
+    }
+
+    .app-card{
+      background:#ffffff;
+      border-radius:var(--radius-md);
+      border:1px solid #e5e7eb;
+      padding:14px;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      transition:.15s ease;
+    }
+    .app-card:hover{
+      transform:translateY(-3px);
+      border-color:var(--primary);
+      box-shadow:0 12px 26px rgba(15,23,42,0.12);
+    }
+
+    .app-thumbnail{
+      width:100%;
+      height:120px;
+      border-radius:12px;
+      object-fit:cover;
+      margin-bottom:10px;
+      border:1px solid #ddd;
+    }
+    .app-name{
+      font-size:16px;
+      font-weight:600;
+      color:var(--text-main);
+      margin-bottom:2px;
+    }
+    .app-desc{
+      font-size:13px;
+      color:var(--text-muted);
+      margin-bottom:6px;
+    }
+    .app-footer{
+      margin-top:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      font-size:12px;
+    }
+    .btn-login{
+      background:var(--primary);
+      color:#ffffff;
+      border:none;
+      padding:6px 14px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:500;
+      transition:.2s ease;
+      white-space:nowrap;
+    }
+    .btn-login:hover{background:var(--primary-dark);}
+.apps-header-status {
+  display: flex;
+  align-items: center;
+  gap: 14px; /* jarak antar tombol */
+}
+
+/* ADD MENU BUTTON */
+.btn-add {
+  background: var(--primary);
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: .2s ease;
+}
+
+.btn-add i {
+  font-size: 14px;
+}
+
+.btn-add:hover {
+  background: var(--primary-dark);
+}
+
+
+/* LOGOUT BUTTON (kiri yang sudah dibuat sebelumnya) */
+.logout-link {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: .2s ease;
+}
+
+.logout-link:hover {
+  background: #ef4444;
+  color: #ffffff;
+  border-color: #ef4444;
+}
+    @media (max-width:992px){
+      .welcome-panel{
+        position:relative;
+        height:auto;
+        padding:20px;
+      }
+      .apps-wrapper{
+        height:auto;
+      }
+    }
