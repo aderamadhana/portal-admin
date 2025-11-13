@@ -12,12 +12,12 @@
     <div class="apps-header-status">
 
         <!-- Tombol Add Menu -->
-        <a href="/add-menu" class="btn-add">
+        <a href="{{ route('menu.add_menu') }}" class="btn-add">
             <i class="bi bi-plus-circle"></i> Add Menu
         </a>
 
         <!-- Tombol Logout -->
-        <a href="/logout" class="logout-link">
+        <a href="{{ route('login.logout') }}" class="logout-link">
             <i class="bi bi-power"></i> Logout
         </a>
 

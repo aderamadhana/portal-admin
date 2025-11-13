@@ -138,13 +138,18 @@
   <!-- RIGHT SIDE -->
   <div class="login-right">
     <h3 class="mb-4 fw-semibold">Login Akun</h3>
-
-    <form>
+    @if($errors->any())
+      <div class="alert alert-danger">
+          {{ $errors->first() }}
+      </div>
+    @endif
+    <form action="{{ route('login.authenticated') }}" method="POST">
+      @csrf
       <div class="mb-3">
         <label class="form-label">Email / Username</label>
         <div class="input-group">
           <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-          <input type="text" class="form-control" placeholder="Masukkan username">
+          <input type="text" class="form-control" name="email" placeholder="Masukkan username">
         </div>
       </div>
 
@@ -152,13 +157,13 @@
         <label class="form-label">Password</label>
         <div class="input-group">
           <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-          <input type="password" class="form-control" placeholder="Masukkan password">
+          <input type="password" class="form-control" name="password" placeholder="Masukkan password">
         </div>
       </div>
 
       <div class="d-flex justify-content-between mb-3">
         <div>
-          <input type="checkbox" id="remember">
+          <input type="checkbox" id="remember" name="remember" class="form-check-input">
           <label for="remember" class="small">Ingat Saya</label>
         </div>
         <a href="#" class="small text-primary">Lupa Password?</a>

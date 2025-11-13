@@ -4,7 +4,7 @@
         <div class="user-box">
         <img src="https://i.pravatar.cc/80?img=3" class="user-photo" alt="User">
         <div>
-            <div class="user-name">Hi, Tuan</div>
+            <div class="user-name">Hi, Tuan {{ session('user.name') }}</div>
             <div class="user-role">Administrator</div>
         </div>
         </div>

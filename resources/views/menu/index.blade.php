@@ -5,7 +5,6 @@
 @section('content')
 <div class="apps-body">
     <div class="row g-3">
-
     <!-- APP 1 -->
     <div class="col-sm-6 col-lg-4">
         <div class="app-card">
