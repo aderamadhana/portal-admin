@@ -2,21 +2,18 @@
 
 namespace App\Http\Middleware;
 
-use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Closure;
 use Illuminate\Http\Request;
 
-class Authenticate extends Middleware
+class Authenticate
 {
-    /**
-     * Redirect ke halaman login kalau belum autentikasi.
-     */
-    protected function redirectTo(Request $request): ?string
+    public function handle(Request $request, Closure $next)
     {
-        if (! $request->expectsJson()) {
-            // pastikan Tuan punya route('login')
-            return route('login.index');
+        // cek apakah session user ada
+        if (!session()->has('user')) {
+            return redirect()->route('login.index');
         }
 
-        return null;
+        return $next($request);
     }
 }

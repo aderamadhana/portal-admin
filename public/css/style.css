@@ -323,6 +323,44 @@
     background: var(--primary-dark);
 }
 
+.search-box {
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-size: 14px;
+}
+
+.category-block {
+    margin-bottom: 18px;
+}
+
+.category-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #374151;
+}
+
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 10px 15px;
+    padding-left: 4px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.checkbox-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
 
 @media (max-width:992px){
   .welcome-panel{

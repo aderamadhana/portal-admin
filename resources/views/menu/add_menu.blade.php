@@ -24,16 +24,102 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Kategori</label>
-                        <select name="app_category" class="form-select" required>
-                            <option value="">- Pilih Kategori -</option>
-                            <option>Clinic</option>
-                            <option>HRIS</option>
-                            <option>Finance</option>
-                            <option>Inventory</option>
-                            <option>CRM</option>
-                            <option>Analytics</option>
-                        </select>
+                        <label class="form-label">Tech Stack</label>
+
+                        <!-- Search Box -->
+                        <input type="text" id="techSearch" class="form-control search-box mb-3" placeholder="Cari tech stack...">
+
+                        <!-- PROGRAMMING LANGUAGES -->
+                        <div class="category-block">
+                            <div class="category-title">Programming Languages</div>
+                            <div class="checkbox-grid">
+
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="PHP"> PHP</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="JavaScript"> JavaScript</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="TypeScript"> TypeScript</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Python"> Python</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Golang"> Go (Golang)</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Java"> Java</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Kotlin"> Kotlin</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="C#"> C#</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="C++"> C++</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Ruby"> Ruby</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Dart"> Dart</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Swift"> Swift</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Rust"> Rust</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Lua"> Lua</label>
+
+                            </div>
+                        </div>
+
+                        <!-- BACKEND -->
+                        <div class="category-block">
+                            <div class="category-title">Backend</div>
+                            <div class="checkbox-grid">
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Laravel"> Laravel</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="CodeIgniter"> CodeIgniter</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="ASP .NET"> ASP .NET</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="ExpressJS"> ExpressJS</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="NestJS"> NestJS</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Django"> Django</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Flask"> Flask</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="FastAPI"> FastAPI</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Spring Boot"> Spring Boot</label>
+                            </div>
+                        </div>
+
+                        <!-- FRONTEND -->
+                        <div class="category-block">
+                            <div class="category-title">Frontend</div>
+                            <div class="checkbox-grid">
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Vue JS"> Vue JS</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="React JS"> React JS</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Angular"> Angular</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Next JS"> Next JS</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Nuxt JS"> Nuxt JS</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="TailwindCSS"> TailwindCSS</label>
+                            </div>
+                        </div>
+
+                        <!-- DATABASE -->
+                        <div class="category-block">
+                            <div class="category-title">Database</div>
+                            <div class="checkbox-grid">
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="MySQL"> MySQL</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="PostgreSQL"> PostgreSQL</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="SQLite"> SQLite</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="MariaDB"> MariaDB</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="MongoDB"> MongoDB</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="ElasticSearch"> ElasticSearch</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Redis"> Redis</label>
+                            </div>
+                        </div>
+
+                        <!-- CLOUD -->
+                        <div class="category-block">
+                            <div class="category-title">Cloud Platform</div>
+                            <div class="checkbox-grid">
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Azure"> Azure</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="AWS"> AWS</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="GCP"> GCP</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="DigitalOcean"> DigitalOcean</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Cloudflare"> Cloudflare</label>
+                            </div>
+                        </div>
+
+                        <!-- DEVOPS -->
+                        <div class="category-block">
+                            <div class="category-title">DevOps / Container</div>
+                            <div class="checkbox-grid">
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Docker"> Docker</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Kubernetes"> Kubernetes</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Terraform"> Terraform</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="CI/CD"> CI/CD Pipeline</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Nginx"> Nginx</label>
+                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Apache"> Apache</label>
+                            </div>
+                        </div>
+
                     </div>
 
                     <div class="mb-3">
@@ -60,4 +146,15 @@
 
     </div>
 </div>
+<script>
+document.getElementById("techSearch").addEventListener("keyup", function () {
+    const search = this.value.toLowerCase();
+    const items = document.querySelectorAll(".checkbox-item");
+
+    items.forEach(item => {
+        const text = item.innerText.toLowerCase();
+        item.style.display = text.includes(search) ? "flex" : "none";
+    });
+});
+</script>
 @endsection

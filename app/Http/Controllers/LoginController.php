@@ -14,7 +14,8 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        // Perform logout logic here (e.g., invalidate session, clear cookies, etc.)
+        Auth::logout();
+        $request->session()->flush();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 

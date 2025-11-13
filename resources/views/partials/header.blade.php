@@ -15,12 +15,13 @@
         <a href="{{ route('menu.add_menu') }}" class="btn-add">
             <i class="bi bi-plus-circle"></i> Add Menu
         </a>
-
-        <!-- Tombol Logout -->
-        <a href="{{ route('login.logout') }}" class="logout-link">
-            <i class="bi bi-power"></i> Logout
-        </a>
-
+        <form action="{{ route('login.logout') }}" method="post">
+            @csrf
+            <!-- Tombol Logout -->
+            <button type="submit" class="logout-link">
+                <i class="bi bi-power"></i> Logout
+            </button>
+        </form>
     </div>
     </div>
 </div>
