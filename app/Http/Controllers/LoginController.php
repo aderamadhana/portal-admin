@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -27,7 +28,7 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (!empty($credentials['email']) && !empty($credentials['password'])) {
-            $user = \App\Models\User::where('email', $credentials['email'])->first();
+            $user = User::where('email', $credentials['email'])->first();
                 
             if($user && Auth::attempt($credentials, $request->has('remember'))) {
                 $request->session()->put('user', [

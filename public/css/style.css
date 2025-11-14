@@ -243,6 +243,32 @@
   background: var(--primary-dark);
 }
 
+.btn-profile {
+  background: #e3f2ff;           /* biru muda */
+  color: #0077cc;                /* biru teks */
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #c7e7ff;
+  transition: .2s ease;
+}
+
+.btn-profile i {
+  font-size: 14px;
+  color: #0077cc;
+}
+
+.btn-profile:hover {
+  background: #d0e9ff;           /* sedikit lebih gelap */
+  color: #0066b3;
+  border-color: #b2dcff;
+}
+
 
 /* LOGOUT BUTTON (kiri yang sudah dibuat sebelumnya) */
 .logout-link {

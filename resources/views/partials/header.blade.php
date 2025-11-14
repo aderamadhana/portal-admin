@@ -10,7 +10,10 @@
         </div>
     </div>
     <div class="apps-header-status">
-
+        <!-- Tombol Add Menu -->
+        <a href="{{ route('menu.profil') }}" class="btn-profile">
+            <i class="bi bi-person"></i> Profile
+        </a>
         <!-- Tombol Add Menu -->
         <a href="{{ route('menu.add_menu') }}" class="btn-add">
             <i class="bi bi-plus-circle"></i> Add Menu
