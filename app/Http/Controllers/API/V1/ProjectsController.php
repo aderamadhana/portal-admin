@@ -5,12 +5,18 @@ namespace App\Http\Controllers\API\V1;
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
 
-class MenuController extends Controller
+class ProjectsController extends Controller
 {
-    public function get_menu()
+    public function get_projects()
     {
         try {
-            $menu = Menu::get();
+            $menu = Menu::get()->map(function ($item) {
+                // tambahkan URL penuh untuk icon_menu
+                $item['icon_menu_url'] = $item->icon_menu
+                    ? asset('storage/' . $item->icon_menu)
+                    : "";
+                return $item;
+            });
             return response()->json([
                 'status' => 'success',
                 'data'   => $menu,

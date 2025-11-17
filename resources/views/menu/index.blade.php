@@ -11,17 +11,39 @@
             </div>
         @endif
         <!-- APP 1 -->
-        <div class="col-sm-6 col-lg-4">
-            <div class="app-card">
-            <img src="https://picsum.photos/400/240?random=1" class="app-thumbnail" alt="">
-            <div class="app-name">Clinic Dashboard</div>
-            <div class="app-desc">Monitoring performa klinik.</div>
-            <div class="app-footer">
-                <span class="text-muted">Clinic</span>
-                <a href="#" class="btn-login">Login</a>
-            </div>
-            </div>
-        </div>
+        @foreach($menu as $item)
+            @if($item)
+                <div class="col-sm-6 col-lg-4">
+                    <div class="app-card">
+                        <img 
+                            src="{{ $item->icon_menu 
+                                ? asset('storage/' . $item->icon_menu) 
+                                : asset('images/default_icon.png') }}" 
+                            class="app-thumbnail" 
+                            alt=""
+                        >
+
+                        <div class="app-name">
+                            {{ optional($item)->getTranslation('nama_menu', app()->getLocale()) ?? '-' }}
+                        </div>
+
+                        <div class="app-desc">
+                            {{ optional($item)->getTranslation('deskripsi', app()->getLocale()) ?? '-' }}
+                        </div>
+
+                        <div class="app-footer">
+                            <div class="app-tech-wrapper">
+                                @foreach($item->tech_stack as $tech)
+                                    <span class="app-tech">{{ $tech }}</span>
+                                @endforeach
+                            </div>
+                            <a href="{{ $item->token_akses ?? '#' }}" class="btn-login">Login</a>
+                        </div>
+                    </div>
+                </div>
+            @endif
+        @endforeach
+
     </div>
 </div>
 @endsection

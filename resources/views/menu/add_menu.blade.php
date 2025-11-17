@@ -1,160 +1,136 @@
-
 @extends('layouts.app')
 
-@section('title', 'Tentang Kami')
+@section('title', 'Tambah Menu Aplikasi')
 @section('content')
 <div class="apps-body">
-    <div class="row g-3">
-        <div class="add-menu-wrapper">
-            <div class="add-menu-card">
-                <h5 class="add-menu-title">
-                    <i class="bi bi-plus-circle"></i> Tambah Menu Aplikasi
-                </h5>
+  <div class="row g-3">
+    <div class="add-menu-wrapper">
+      <div class="add-menu-card">
+        <h5 class="add-menu-title">
+          <i class="bi bi-plus-circle"></i> Tambah Menu Aplikasi
+        </h5>
 
-                <form action="/add-menu" method="POST" enctype="multipart/form-data">
-
-                    <div class="mb-3">
-                        <label class="form-label">Nama Aplikasi</label>
-                        <input type="text" name="app_name" class="form-control" placeholder="Contoh: Clinic Dashboard" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Deskripsi Singkat</label>
-                        <textarea name="app_desc" class="form-control" rows="2" placeholder="Monitoring performa klinik..." required></textarea>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Tech Stack</label>
-
-                        <!-- Search Box -->
-                        <input type="text" id="techSearch" class="form-control search-box mb-3" placeholder="Cari tech stack...">
-
-                        <!-- PROGRAMMING LANGUAGES -->
-                        <div class="category-block">
-                            <div class="category-title">Programming Languages</div>
-                            <div class="checkbox-grid">
-
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="PHP"> PHP</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="JavaScript"> JavaScript</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="TypeScript"> TypeScript</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Python"> Python</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Golang"> Go (Golang)</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Java"> Java</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Kotlin"> Kotlin</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="C#"> C#</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="C++"> C++</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Ruby"> Ruby</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Dart"> Dart</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Swift"> Swift</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Rust"> Rust</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Lua"> Lua</label>
-
-                            </div>
-                        </div>
-
-                        <!-- BACKEND -->
-                        <div class="category-block">
-                            <div class="category-title">Backend</div>
-                            <div class="checkbox-grid">
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Laravel"> Laravel</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="CodeIgniter"> CodeIgniter</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="ASP .NET"> ASP .NET</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="ExpressJS"> ExpressJS</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="NestJS"> NestJS</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Django"> Django</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Flask"> Flask</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="FastAPI"> FastAPI</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Spring Boot"> Spring Boot</label>
-                            </div>
-                        </div>
-
-                        <!-- FRONTEND -->
-                        <div class="category-block">
-                            <div class="category-title">Frontend</div>
-                            <div class="checkbox-grid">
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Vue JS"> Vue JS</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="React JS"> React JS</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Angular"> Angular</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Next JS"> Next JS</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Nuxt JS"> Nuxt JS</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="TailwindCSS"> TailwindCSS</label>
-                            </div>
-                        </div>
-
-                        <!-- DATABASE -->
-                        <div class="category-block">
-                            <div class="category-title">Database</div>
-                            <div class="checkbox-grid">
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="MySQL"> MySQL</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="PostgreSQL"> PostgreSQL</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="SQLite"> SQLite</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="MariaDB"> MariaDB</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="MongoDB"> MongoDB</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="ElasticSearch"> ElasticSearch</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Redis"> Redis</label>
-                            </div>
-                        </div>
-
-                        <!-- CLOUD -->
-                        <div class="category-block">
-                            <div class="category-title">Cloud Platform</div>
-                            <div class="checkbox-grid">
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Azure"> Azure</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="AWS"> AWS</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="GCP"> GCP</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="DigitalOcean"> DigitalOcean</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Cloudflare"> Cloudflare</label>
-                            </div>
-                        </div>
-
-                        <!-- DEVOPS -->
-                        <div class="category-block">
-                            <div class="category-title">DevOps / Container</div>
-                            <div class="checkbox-grid">
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Docker"> Docker</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Kubernetes"> Kubernetes</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Terraform"> Terraform</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="CI/CD"> CI/CD Pipeline</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Nginx"> Nginx</label>
-                                <label class="checkbox-item"><input type="checkbox" name="tech[]" value="Apache"> Apache</label>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">URL Login Aplikasi</label>
-                        <input type="url" name="app_url" class="form-control" placeholder="https://example.com/login" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Thumbnail / Gambar</label>
-                        <input type="file" name="app_thumbnail" class="form-control" accept="image/*" required>
-                        <small class="text-muted">Format jpg/png, minimal ukuran 600x400px.</small>
-                    </div>
-
-                    <div class="d-flex justify-content-end gap-2 mt-4">
-                        <a href="{{ route('menu.index') }}" class="btn btn-light px-4">Batal</a>
-                        <button class="btn btn-primary px-4">
-                            <i class="bi bi-check-circle"></i> Simpan
-                        </button>
-                    </div>
-
-                </form>
+        <form action="{{ route('menu.store') }}" method="POST" enctype="multipart/form-data">
+          @csrf
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Nama Menu</label>
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#en_name">EN</a></li>
+              <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#id_name">ID</a></li>
+            </ul>
+            <div class="tab-content mt-2">
+              <div class="tab-pane fade show active" id="en_name">
+                <input type="text" name="nama_menu[en]" class="form-control" placeholder="Example: Patient Dashboard" required>
+              </div>
+              <div class="tab-pane fade" id="id_name">
+                <input type="text" name="nama_menu[id]" class="form-control" placeholder="Contoh: Dashboard Pasien" required>
+              </div>
             </div>
-        </div>
+          </div>
 
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Deskripsi Menu</label>
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#en_desc">EN</a></li>
+              <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#id_desc">ID</a></li>
+            </ul>
+            <div class="tab-content mt-2">
+              <div class="tab-pane fade show active" id="en_desc">
+                <textarea name="deskripsi[en]" class="form-control" rows="2" placeholder="Example: Manage clinic performance..."></textarea>
+              </div>
+              <div class="tab-pane fade" id="id_desc">
+                <textarea name="deskripsi[id]" class="form-control" rows="2" placeholder="Contoh: Mengelola performa klinik..."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Tech Stack</label>
+            <input type="text" id="techSearch" class="form-control mb-3" placeholder="Cari tech stack...">
+            <div class="category-block">
+              <div class="category-title">Backend</div>
+              <div class="checkbox-grid">
+                @foreach(['Laravel','CodeIgniter','ExpressJS','NestJS','Django','Flask'] as $tech)
+                  <label class="checkbox-item">
+                    <input type="checkbox" name="tech[]" > {{ $tech }}
+                  </label>
+                @endforeach
+              </div>
+            </div>
+
+            <div class="category-block">
+              <div class="category-title">Frontend</div>
+              <div class="checkbox-grid">
+                @foreach(['Vue JS','React JS','Angular','TailwindCSS'] as $tech)
+                  <label class="checkbox-item">
+                    <input type="checkbox" name="tech[]" > {{ $tech }}
+                  </label>
+                @endforeach
+              </div>
+            </div>
+
+            <div class="category-block">
+              <div class="category-title">Database</div>
+              <div class="checkbox-grid">
+                @foreach(['MySQL','PostgreSQL','SQLite','MongoDB','Redis'] as $tech)
+                  <label class="checkbox-item">
+                    <input type="checkbox" name="tech[]" > {{ $tech }}
+                  </label>
+                @endforeach
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Token Akses / URL</label>
+            <input type="text" name="token_akses" class="form-control" placeholder="https://example.com/login" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Icon Menu</label>
+            <input type="file" name="icon_menu" class="form-control" accept="image/*" required>
+            <small class="text-muted">Format: PNG, ukuran kecil (maks. 200KB)</small>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Status</label>
+            <select name="status" class="form-select" required>
+              <option value="1">Aktif</option>
+              <option value="0">Nonaktif</option>
+            </select>
+          </div>
+
+          <div class="d-flex justify-content-end gap-2 mt-4">
+            <a href="{{ route('menu.index') }}" class="btn btn-light px-4">Batal</a>
+            <button class="btn btn-primary px-4">
+              <i class="bi bi-check-circle"></i> Simpan
+            </button>
+          </div>
+
+        </form>
+      </div>
     </div>
+  </div>
 </div>
+
+{{-- 🔍 Filter Tech Stack --}}
 <script>
 document.getElementById("techSearch").addEventListener("keyup", function () {
-    const search = this.value.toLowerCase();
-    const items = document.querySelectorAll(".checkbox-item");
-
-    items.forEach(item => {
-        const text = item.innerText.toLowerCase();
-        item.style.display = text.includes(search) ? "flex" : "none";
-    });
+  const search = this.value.toLowerCase();
+  const items = document.querySelectorAll(".checkbox-item");
+  items.forEach(item => {
+    const text = item.innerText.toLowerCase();
+    item.style.display = text.includes(search) ? "flex" : "none";
+  });
 });
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<style>
+.checkbox-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.checkbox-item { display: flex; align-items: center; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 6px; padding: 4px 10px; cursor: pointer; transition: 0.2s; }
+.checkbox-item:hover { background-color: #e9ecef; }
+.nav-tabs .nav-link.active { color: #0d6efd; font-weight: 600; }
+</style>
 @endsection

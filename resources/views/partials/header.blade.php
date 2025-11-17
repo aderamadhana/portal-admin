@@ -5,7 +5,7 @@
         <i class="bi bi-grid-3x3-gap-fill"></i>
         </div>
         <div>
-        <div class="apps-header-title">Daftar Aplikasi</div>
+        <a href="{{ route('menu.index') }}" class="apps-header-title">Daftar Aplikasi</a>
         <div class="apps-header-sub">Pilih aplikasi yang ingin Anda akses.</div>
         </div>
     </div>

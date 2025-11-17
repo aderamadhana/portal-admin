@@ -6,21 +6,28 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Translatable\HasTranslations;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasTranslations;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var list<string>
      */
+    public $translatable = ['jabatan', 'deskripsi'];
+
     protected $fillable = [
         'name',
         'email',
         'password',
+        'jabatan',
+        'deskripsi',
+        'foto_profil',
+        'tech_stack',
     ];
 
     /**

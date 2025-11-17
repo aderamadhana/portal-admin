@@ -2,20 +2,29 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Menu extends Model
 {
-    protected $table = 'menu';
+    use HasTranslations;
+
+    protected $table = 'menu'; 
     protected $primaryKey = 'id_menu';
+    public $translatable = ['nama_menu', 'deskripsi']; 
+    public $timestamps = false;
+
     protected $fillable = [
-        'id_menu',
         'nama_menu',
         'deskripsi',
         'tech_stack',
         'token_akses',
         'icon_menu',
         'status',
+    ];
+
+    protected $casts = [
+        'tech_stack' => 'array',
+        'status' => 'boolean',
     ];
 }
