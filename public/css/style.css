@@ -1,6 +1,8 @@
 :root{
       --primary:#2e5bff;
       --primary-dark:#2749d9;
+      --danger:#ff2e2e;
+      --danger-dark:#d92727;
       --bg-left:linear-gradient(135deg,#1b1f3b,#3d4e81);
       --radius-md:16px;
       --text-main:#1f2937;
@@ -203,6 +205,7 @@
       font-size:12px;
     }
     .btn-login{
+      text-decoration: none;
       background:var(--primary);
       color:#ffffff;
       border:none;
@@ -214,10 +217,28 @@
       white-space:nowrap;
     }
     .btn-login:hover{background:var(--primary-dark);}
+
+    .btn-delete{
+      text-decoration: none;
+      background:var(--danger);
+      color:#ffffff;
+      border:none;
+      padding:6px 14px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:500;
+      transition:.2s ease;
+      white-space:nowrap;
+    }
+    .btn-delete:hover{background:var(--danger-dark);}
 .apps-header-status {
   display: flex;
   align-items: center;
   gap: 14px; /* jarak antar tombol */
+}
+
+.btn-group {
+  margin: 0 auto;
 }
 
 /* ADD MENU BUTTON */
@@ -301,7 +322,6 @@
 
 .add-menu-card {
     width: 100%;
-    max-width: 520px;
     background: #ffffff;
     padding: 28px;
     border-radius: 18px;
@@ -441,21 +461,6 @@
   white-space: nowrap;
 }
 
-.btn-login {
-  background: #0d6efd;
-  color: #fff;
-  padding: 4px 14px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.btn-login:hover {
-  background: #0b5ed7;
-}
-
-
 
 @media (max-width:992px){
   .welcome-panel{
@@ -466,4 +471,9 @@
   .apps-wrapper{
     height:auto;
   }
+}
+
+/* CK EDITOR */
+.ck-editor__editable {
+    min-height: 200px;
 }

@@ -36,10 +36,10 @@
             </ul>
             <div class="tab-content mt-2">
               <div class="tab-pane fade show active" id="en_desc">
-                <textarea name="deskripsi[en]" class="form-control" rows="2" placeholder="Example: Manage clinic performance..."></textarea>
+                <textarea name="deskripsi[en]" id="editor_eng" class="form-control" rows="2" placeholder="Example: Manage clinic performance..."></textarea>
               </div>
               <div class="tab-pane fade" id="id_desc">
-                <textarea name="deskripsi[id]" class="form-control" rows="2" placeholder="Contoh: Mengelola performa klinik..."></textarea>
+                <textarea name="deskripsi[id]" id="editor_ind" class="form-control" rows="2" placeholder="Contoh: Mengelola performa klinik..."></textarea>
               </div>
             </div>
           </div>
@@ -47,34 +47,177 @@
           <div class="mb-3">
             <label class="form-label fw-semibold">Tech Stack</label>
             <input type="text" id="techSearch" class="form-control mb-3" placeholder="Cari tech stack...">
+            
+            <!-- Backend -->
             <div class="category-block">
-              <div class="category-title">Backend</div>
+              <div class="category-title">Backend Framework</div>
               <div class="checkbox-grid">
-                @foreach(['Laravel','CodeIgniter','ExpressJS','NestJS','Django','Flask'] as $tech)
+                @foreach(['Laravel','CodeIgniter','Slim','Lumen','Symfony','ExpressJS','NestJS','FastAPI','Django','Flask','Spring Boot','ASP.NET Core','Ruby on Rails'] as $tech)
                   <label class="checkbox-item">
-                    <input type="checkbox" name="tech[]" > {{ $tech }}
+                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                  </label>
+                @endforeach
+              </div>
+            </div>
+
+            <!-- Frontend -->
+            <div class="category-block">
+              <div class="category-title">Frontend Framework</div>
+              <div class="checkbox-grid">
+                @foreach(['Vue.js','React','Angular','Svelte','Next.js','Nuxt.js','Remix','Alpine.js','Htmx'] as $tech)
+                  <label class="checkbox-item">
+                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
                   </label>
                 @endforeach
               </div>
             </div>
 
             <div class="category-block">
-              <div class="category-title">Frontend</div>
+              <div class="category-title">CSS Framework</div>
               <div class="checkbox-grid">
-                @foreach(['Vue JS','React JS','Angular','TailwindCSS'] as $tech)
+                @foreach(['TailwindCSS','Bootstrap','Bulma','Material UI','Ant Design','Chakra UI','Vuetify','DaisyUI','Shadcn UI'] as $tech)
                   <label class="checkbox-item">
-                    <input type="checkbox" name="tech[]" > {{ $tech }}
+                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
                   </label>
                 @endforeach
               </div>
             </div>
 
+            <!-- Full Stack Integration -->
+            <div class="category-block">
+              <div class="category-title">Full-Stack Integration</div>
+              <div class="checkbox-grid">
+                @foreach(['Laravel Inertia','Laravel Livewire','Laravel Breeze','Laravel Jetstream'] as $tech)
+                  <label class="checkbox-item">
+                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                  </label>
+                @endforeach
+              </div>
+            </div>
+
+            <!-- Database -->
             <div class="category-block">
               <div class="category-title">Database</div>
               <div class="checkbox-grid">
-                @foreach(['MySQL','PostgreSQL','SQLite','MongoDB','Redis'] as $tech)
+                @foreach(['MySQL','PostgreSQL','SQLite','MongoDB','Redis','MariaDB','Microsoft SQL Server','Supabase','Firebase'] as $tech)
                   <label class="checkbox-item">
-                    <input type="checkbox" name="tech[]" > {{ $tech }}
+                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                  </label>
+                @endforeach
+              </div>
+            </div>
+
+            <div class="category-block">
+              <div class="category-title">ORM & Query Builder</div>
+              <div class="checkbox-grid">
+                @foreach(['Eloquent ORM','Doctrine','Prisma','TypeORM','Sequelize','Mongoose','Drizzle ORM'] as $tech)
+                  <label class="checkbox-item">
+                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                  </label>
+                @endforeach
+              </div>
+            </div>
+
+            <!-- API & Communication -->
+            <div class="category-block">
+              <div class="category-title">API Architecture</div>
+              <div class="checkbox-grid">
+                @foreach(['REST API','GraphQL','gRPC','WebSocket','tRPC'] as $tech)
+                  <label class="checkbox-item">
+                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                  </label>
+                @endforeach
+              </div>
+            </div>
+
+            <div class="category-block">
+              <div class="category-title">Message Broker & Queue</div>
+              <div class="checkbox-grid">
+                @foreach(['RabbitMQ','Apache Kafka','Redis Queue','Laravel Queue','BullMQ','Amazon SQS'] as $tech)
+                  <label class="checkbox-item">
+                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                  </label>
+                @endforeach
+              </div>
+            </div>
+
+            <div class="category-block">
+              <div class="category-title">Real-time Communication</div>
+              <div class="checkbox-grid">
+                @foreach(['Socket.io','Pusher','Laravel Echo','Ably','Centrifugo'] as $tech)
+                  <label class="checkbox-item">
+                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                  </label>
+                @endforeach
+              </div>
+            </div>
+
+            <!-- Authentication & Security -->
+            <div class="category-block">
+              <div class="category-title">Authentication & Security</div>
+              <div class="checkbox-grid">
+                @foreach(['Laravel Sanctum','Laravel Passport','JWT','OAuth2','NextAuth','Auth0','Clerk','Firebase Auth'] as $tech)
+                  <label class="checkbox-item">
+                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                  </label>
+                @endforeach
+              </div>
+            </div>
+
+            <!-- Tools & Utilities -->
+            <div class="category-block">
+              <div class="category-title">Build Tools & Bundlers</div>
+              <div class="checkbox-grid">
+                @foreach(['Vite','Webpack','Laravel Mix','Rollup','Parcel','esbuild'] as $tech)
+                  <label class="checkbox-item">
+                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                  </label>
+                @endforeach
+              </div>
+            </div>
+
+            <div class="category-block">
+              <div class="category-title">Testing</div>
+              <div class="checkbox-grid">
+                @foreach(['PHPUnit','Pest','Jest','Vitest','Cypress','Playwright','Testing Library'] as $tech)
+                  <label class="checkbox-item">
+                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                  </label>
+                @endforeach
+              </div>
+            </div>
+
+            <!-- Desktop & Mobile -->
+            <div class="category-block">
+              <div class="category-title">Desktop & Mobile Development</div>
+              <div class="checkbox-grid">
+                @foreach(['Electron','Tauri','React Native','Flutter','Ionic','Capacitor'] as $tech)
+                  <label class="checkbox-item">
+                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                  </label>
+                @endforeach
+              </div>
+            </div>
+
+            <!-- CMS -->
+            <div class="category-block">
+              <div class="category-title">CMS & Admin Panel</div>
+              <div class="checkbox-grid">
+                @foreach(['WordPress','Strapi','Contentful','Sanity','Filament','Statamic','Directus'] as $tech)
+                  <label class="checkbox-item">
+                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                  </label>
+                @endforeach
+              </div>
+            </div>
+
+            <!-- DevOps -->
+            <div class="category-block">
+              <div class="category-title">DevOps & Deployment</div>
+              <div class="checkbox-grid">
+                @foreach(['Docker','Kubernetes','GitHub Actions','GitLab CI/CD','Nginx','Apache','Vercel','Netlify','AWS','Google Cloud','Azure'] as $tech)
+                  <label class="checkbox-item">
+                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
                   </label>
                 @endforeach
               </div>
@@ -123,6 +266,19 @@ document.getElementById("techSearch").addEventListener("keyup", function () {
     item.style.display = text.includes(search) ? "flex" : "none";
   });
 });
+
+ClassicEditor
+.create(document.querySelector('#editor_eng'))
+.catch(error => {
+    console.error(error);
+});
+
+ClassicEditor
+.create(document.querySelector('#editor_ind'))
+.catch(error => {
+    console.error(error);
+});
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

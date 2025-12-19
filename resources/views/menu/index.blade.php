@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="app-desc">
-                            {{ optional($item)->getTranslation('deskripsi', app()->getLocale()) ?? '-' }}
+                            {!! optional($item)->getTranslation('deskripsi', app()->getLocale()) ?? '-' !!}
                         </div>
 
                         <div class="app-footer">
@@ -37,7 +37,10 @@
                                     <span class="app-tech">{{ $tech }}</span>
                                 @endforeach
                             </div>
-                            <a href="{{ $item->token_akses ?? '#' }}" class="btn-login">Login</a>
+                            <div class="btn-group mt-5">
+                                <a href="{{ $item->token_akses ?? '#' }}" class="btn-delete me-2">Delete</a>
+                                <a href="{{ $item->token_akses ?? '#' }}" class="btn-login">Login</a>
+                            </div>
                         </div>
                     </div>
                 </div>

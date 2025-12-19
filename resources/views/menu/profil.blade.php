@@ -56,7 +56,7 @@
           </div>
 
           {{-- 🧠 TECH STACK --}}
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <label class="form-label fw-semibold">Tech Stack</label>
             <input type="text" id="techSearch" class="form-control search-box mb-3" placeholder="Cari tech stack...">
 
@@ -95,7 +95,7 @@
                 @endforeach
               </div>
             </div>
-          </div>
+          </div> -->
 
           {{-- 🖼️ FOTO PROFIL --}}
           <div class="mb-3">
