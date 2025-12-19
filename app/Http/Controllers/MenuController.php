@@ -31,7 +31,7 @@ class MenuController extends Controller
         $validated = $request->validate([
             'nama_menu' => 'required|array',
             'deskripsi' => 'required|array',
-            'tech_stack' => 'nullable|array',
+            'tech_stack' => 'required|array',
             'token_akses' => 'required|string|max:255',
             'icon_menu' => 'required|image|mimes:png,jpg,jpeg|max:2048',
             'status' => 'required|in:0,1',

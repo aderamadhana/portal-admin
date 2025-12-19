@@ -54,7 +54,7 @@
               <div class="checkbox-grid">
                 @foreach(['Laravel','CodeIgniter','Slim','Lumen','Symfony','ExpressJS','NestJS','FastAPI','Django','Flask','Spring Boot','ASP.NET Core','Ruby on Rails'] as $tech)
                   <label class="checkbox-item">
-                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                    <input type="checkbox" name="tech_stack[]" value="{{ $tech }}"> {{ $tech }}
                   </label>
                 @endforeach
               </div>
@@ -66,7 +66,7 @@
               <div class="checkbox-grid">
                 @foreach(['Vue.js','React','Angular','Svelte','Next.js','Nuxt.js','Remix','Alpine.js','Htmx'] as $tech)
                   <label class="checkbox-item">
-                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                    <input type="checkbox" name="tech_stack[]" value="{{ $tech }}"> {{ $tech }}
                   </label>
                 @endforeach
               </div>
@@ -77,7 +77,7 @@
               <div class="checkbox-grid">
                 @foreach(['TailwindCSS','Bootstrap','Bulma','Material UI','Ant Design','Chakra UI','Vuetify','DaisyUI','Shadcn UI'] as $tech)
                   <label class="checkbox-item">
-                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                    <input type="checkbox" name="tech_stack[]" value="{{ $tech }}"> {{ $tech }}
                   </label>
                 @endforeach
               </div>
@@ -89,7 +89,7 @@
               <div class="checkbox-grid">
                 @foreach(['Laravel Inertia','Laravel Livewire','Laravel Breeze','Laravel Jetstream'] as $tech)
                   <label class="checkbox-item">
-                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                    <input type="checkbox" name="tech_stack[]" value="{{ $tech }}"> {{ $tech }}
                   </label>
                 @endforeach
               </div>
@@ -101,7 +101,7 @@
               <div class="checkbox-grid">
                 @foreach(['MySQL','PostgreSQL','SQLite','MongoDB','Redis','MariaDB','Microsoft SQL Server','Supabase','Firebase'] as $tech)
                   <label class="checkbox-item">
-                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                    <input type="checkbox" name="tech_stack[]" value="{{ $tech }}"> {{ $tech }}
                   </label>
                 @endforeach
               </div>
@@ -112,7 +112,7 @@
               <div class="checkbox-grid">
                 @foreach(['Eloquent ORM','Doctrine','Prisma','TypeORM','Sequelize','Mongoose','Drizzle ORM'] as $tech)
                   <label class="checkbox-item">
-                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                    <input type="checkbox" name="tech_stack[]" value="{{ $tech }}"> {{ $tech }}
                   </label>
                 @endforeach
               </div>
@@ -124,7 +124,7 @@
               <div class="checkbox-grid">
                 @foreach(['REST API','GraphQL','gRPC','WebSocket','tRPC'] as $tech)
                   <label class="checkbox-item">
-                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                    <input type="checkbox" name="tech_stack[]" value="{{ $tech }}"> {{ $tech }}
                   </label>
                 @endforeach
               </div>
@@ -135,7 +135,7 @@
               <div class="checkbox-grid">
                 @foreach(['RabbitMQ','Apache Kafka','Redis Queue','Laravel Queue','BullMQ','Amazon SQS'] as $tech)
                   <label class="checkbox-item">
-                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                    <input type="checkbox" name="tech_stack[]" value="{{ $tech }}"> {{ $tech }}
                   </label>
                 @endforeach
               </div>
@@ -146,7 +146,7 @@
               <div class="checkbox-grid">
                 @foreach(['Socket.io','Pusher','Laravel Echo','Ably','Centrifugo'] as $tech)
                   <label class="checkbox-item">
-                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                    <input type="checkbox" name="tech_stack[]" value="{{ $tech }}"> {{ $tech }}
                   </label>
                 @endforeach
               </div>
@@ -158,7 +158,7 @@
               <div class="checkbox-grid">
                 @foreach(['Laravel Sanctum','Laravel Passport','JWT','OAuth2','NextAuth','Auth0','Clerk','Firebase Auth'] as $tech)
                   <label class="checkbox-item">
-                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                    <input type="checkbox" name="tech_stack[]" value="{{ $tech }}"> {{ $tech }}
                   </label>
                 @endforeach
               </div>
@@ -170,7 +170,7 @@
               <div class="checkbox-grid">
                 @foreach(['Vite','Webpack','Laravel Mix','Rollup','Parcel','esbuild'] as $tech)
                   <label class="checkbox-item">
-                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                    <input type="checkbox" name="tech_stack[]" value="{{ $tech }}"> {{ $tech }}
                   </label>
                 @endforeach
               </div>
@@ -181,7 +181,7 @@
               <div class="checkbox-grid">
                 @foreach(['PHPUnit','Pest','Jest','Vitest','Cypress','Playwright','Testing Library'] as $tech)
                   <label class="checkbox-item">
-                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                    <input type="checkbox" name="tech_stack[]" value="{{ $tech }}"> {{ $tech }}
                   </label>
                 @endforeach
               </div>
@@ -193,7 +193,7 @@
               <div class="checkbox-grid">
                 @foreach(['Electron','Tauri','React Native','Flutter','Ionic','Capacitor'] as $tech)
                   <label class="checkbox-item">
-                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                    <input type="checkbox" name="tech_stack[]" value="{{ $tech }}"> {{ $tech }}
                   </label>
                 @endforeach
               </div>
@@ -205,7 +205,7 @@
               <div class="checkbox-grid">
                 @foreach(['WordPress','Strapi','Contentful','Sanity','Filament','Statamic','Directus'] as $tech)
                   <label class="checkbox-item">
-                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                    <input type="checkbox" name="tech_stack[]" value="{{ $tech }}"> {{ $tech }}
                   </label>
                 @endforeach
               </div>
@@ -217,7 +217,7 @@
               <div class="checkbox-grid">
                 @foreach(['Docker','Kubernetes','GitHub Actions','GitLab CI/CD','Nginx','Apache','Vercel','Netlify','AWS','Google Cloud','Azure'] as $tech)
                   <label class="checkbox-item">
-                    <input type="checkbox" name="tech[]" value="{{ $tech }}"> {{ $tech }}
+                    <input type="checkbox" name="tech_stack[]" value="{{ $tech }}"> {{ $tech }}
                   </label>
                 @endforeach
               </div>
