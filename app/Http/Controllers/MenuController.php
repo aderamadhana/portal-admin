@@ -31,6 +31,7 @@ class MenuController extends Controller
         $validated = $request->validate([
             'nama_menu' => 'required|array',
             'deskripsi' => 'required|array',
+            'fitur' => 'required|array',
             'tech_stack' => 'required|array',
             'token_akses' => 'required|string|max:255',
             'icon_menu' => 'required|image|mimes:png,jpg,jpeg|max:2048',
@@ -42,6 +43,7 @@ class MenuController extends Controller
         $menu = new Menu();
         $menu->setTranslations('nama_menu', $validated['nama_menu']);
         $menu->setTranslations('deskripsi', $validated['deskripsi']);
+        $menu->setTranslations('fitur', $validated['fitur']);
         $menu->tech_stack = $validated['tech_stack'] ?? [];
         $menu->token_akses = $validated['token_akses'];
         $menu->icon_menu = $path;
@@ -68,5 +70,14 @@ class MenuController extends Controller
         $user->save();
 
         return redirect()->route('menu.index')->with('success', 'Profil berhasil disimpan.');
+    }
+
+    public function destroy($id)
+    {
+        $item = Menu::findOrFail($id);
+
+        $item->delete();
+
+        return redirect()->back()->with('success', 'App deleted successfully');
     }
 }

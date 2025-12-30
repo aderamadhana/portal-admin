@@ -37,11 +37,23 @@
                                     <span class="app-tech">{{ $tech }}</span>
                                 @endforeach
                             </div>
+
                             <div class="btn-group mt-5">
-                                <a href="{{ $item->token_akses ?? '#' }}" class="btn-delete me-2">Delete</a>
-                                <a href="{{ $item->token_akses ?? '#' }}" class="btn-login">Login</a>
+                                <form action="{{ route('menu.destroy', $item) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit" class="btn-delete me-2">
+                                        Delete
+                                    </button>
+                                </form>
+
+                                <a href="{{ $item->token_akses ?? '#' }}" class="btn-login">
+                                    Login
+                                </a>
                             </div>
                         </div>
+
                     </div>
                 </div>
             @endif

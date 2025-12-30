@@ -14,4 +14,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profil', [MenuController::class, 'profil'])->name('menu.profil');
     Route::post('/save-profil', [MenuController::class, 'save_profil'])->name('menu.save_profil');
     Route::post('/store', [MenuController::class, 'store'])->name('menu.store');
+    Route::delete('/menu/add_menu/{id}', [MenuController::class, 'destroy'])
+    ->name('menu.destroy');
 });

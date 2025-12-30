@@ -11,12 +11,13 @@ class Menu extends Model
 
     protected $table = 'menu'; 
     protected $primaryKey = 'id_menu';
-    public $translatable = ['nama_menu', 'deskripsi']; 
+    public $translatable = ['nama_menu', 'deskripsi', 'fitur']; 
     public $timestamps = false;
 
     protected $fillable = [
         'nama_menu',
         'deskripsi',
+        'fitur',
         'tech_stack',
         'token_akses',
         'icon_menu',

@@ -1,19 +1,19 @@
 @extends('layouts.app')
 
-@section('title', 'Tambah Menu Aplikasi')
+@section('title', 'Tambah Projek')
 @section('content')
 <div class="apps-body">
   <div class="row g-3">
     <div class="add-menu-wrapper">
       <div class="add-menu-card">
         <h5 class="add-menu-title">
-          <i class="bi bi-plus-circle"></i> Tambah Menu Aplikasi
+          <i class="bi bi-plus-circle"></i> Tambah Projek
         </h5>
 
         <form action="{{ route('menu.store') }}" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="mb-3">
-            <label class="form-label fw-semibold">Nama Menu</label>
+            <label class="form-label fw-semibold">Nama Projek</label>
             <ul class="nav nav-tabs" role="tablist">
               <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#en_name">EN</a></li>
               <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#id_name">ID</a></li>
@@ -29,7 +29,7 @@
           </div>
 
           <div class="mb-3">
-            <label class="form-label fw-semibold">Deskripsi Menu</label>
+            <label class="form-label fw-semibold">Deskripsi Projek</label>
             <ul class="nav nav-tabs" role="tablist">
               <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#en_desc">EN</a></li>
               <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#id_desc">ID</a></li>
@@ -40,6 +40,22 @@
               </div>
               <div class="tab-pane fade" id="id_desc">
                 <textarea name="deskripsi[id]" id="editor_ind" class="form-control" rows="2" placeholder="Contoh: Mengelola performa klinik..."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Fitur</label>
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#en_fitur">EN</a></li>
+              <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#id_fitur">ID</a></li>
+            </ul>
+            <div class="tab-content mt-2">
+              <div class="tab-pane fade show active" id="en_fitur">
+                <textarea name="fitur[en]" id="fitur_eng" class="form-control" rows="2" placeholder="Example: Manage clinic performance..."></textarea>
+              </div>
+              <div class="tab-pane fade" id="id_fitur">
+                <textarea name="fitur[id]" id="fitur_ind" class="form-control" rows="2" placeholder="Contoh: Mengelola performa klinik..."></textarea>
               </div>
             </div>
           </div>
@@ -230,7 +246,7 @@
           </div>
 
           <div class="mb-3">
-            <label class="form-label fw-semibold">Icon Menu</label>
+            <label class="form-label fw-semibold">Icon Projek</label>
             <input type="file" name="icon_menu" class="form-control" accept="image/*" required>
             <small class="text-muted">Format: PNG, ukuran kecil (maks. 200KB)</small>
           </div>
@@ -278,6 +294,19 @@ ClassicEditor
 .catch(error => {
     console.error(error);
 });
+
+ClassicEditor
+.create(document.querySelector('#fitur_eng'))
+.catch(error => {
+    console.error(error);
+});
+
+ClassicEditor
+.create(document.querySelector('#fitur_ind'))
+.catch(error => {
+    console.error(error);
+});
+
 
 </script>
 
