@@ -8,32 +8,57 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to Production (No SSH)
+    name: Deploy to Production
     runs-on: ubuntu-latest
 
     steps:
       - name: 📋 Checkout Code
         uses: actions/checkout@v4
 
-      - name: 📦 Install Dependencies (CI Check Only)
-        run: |
-          composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
+      - name: 🚀 Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          command_timeout: 30m
+          script: |
+            set -e
 
-      - name: 🧪 Laravel Sanity Check
-        run: |
-          php -v
-          php artisan --version || true
+            echo "===== DEPLOY START ====="
+            cd ${{ secrets.PROJECT_PATH }}
 
-      - name: ✅ Deployment Marked Successful
-        run: |
-          echo "========================================="
-          echo "✅ Deployment pipeline completed"
-          echo "ℹ️  No SSH / no server-side deployment executed"
-          echo "🌐 Target: portal.aderamadhana.com"
-          echo "🔖 Git commit: $GITHUB_SHA"
-          echo "📅 Time: $(date '+%Y-%m-%d %H:%M:%S')"
-          echo "========================================="
+            echo "→ Sync repository"
+            git fetch origin main
+            git reset --hard origin/main
 
-      - name: 📣 GitHub Notice
+            echo "→ Install dependencies"
+            composer install \
+              --no-dev \
+              --no-interaction \
+              --prefer-dist \
+              --optimize-autoloader
+
+            echo "→ Run migrations"
+            php artisan migrate --force --no-interaction
+
+            echo "→ Optimize application"
+            php artisan optimize
+
+            echo "→ Fix permissions"
+            chmod -R ug+rw storage bootstrap/cache
+
+            echo "===== DEPLOY SUCCESS ====="
+            echo "Commit: $(git rev-parse --short HEAD)"
+            echo "Time: $(date '+%Y-%m-%d %H:%M:%S')"
+
+      - name: ✅ Deployment Success
+        if: success()
         run: |
-          echo "::notice title=Deploy Finished::Pipeline finished without SSH-based deployment"
+          echo "::notice title=Deployment Success::Portal deployed successfully"
+
+      - name: ❌ Deployment Failed
+        if: failure()
+        run: |
+          echo "::error title=Deployment Failed::Check SSH logs"
