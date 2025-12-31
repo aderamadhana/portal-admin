@@ -10,7 +10,7 @@ class ProjectsController extends Controller
     public function get_projects()
     {
         try {
-            $menu = Menu::orderBy('id_menu', 'desc')->get()->map(function ($item) {
+            $menu = Menu::get()->map(function ($item) {
                 // tambahkan URL penuh untuk icon_menu
                 $item['icon_menu_url'] = $item->icon_menu
                     ? asset('storage/' . $item->icon_menu)
