@@ -1,0 +1,65 @@
+name: Deploy Portal Admin
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 🚀 Deploy to portal.aderamadhana.com
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            echo "🔄 Starting deployment..."
+            
+            # Navigate to project
+            cd ${{ secrets.PROJECT_PATH }}
+            
+            # Pull latest code
+            echo "⬇️ Pulling latest changes..."
+            git pull origin main
+            
+            # Install dependencies
+            echo "📦 Installing Composer dependencies..."
+            composer install --no-dev --optimize-autoloader --no-interaction
+            
+            # Clear caches
+            echo "🧹 Clearing caches..."
+            php artisan config:clear
+            php artisan cache:clear
+            php artisan view:clear
+            php artisan route:clear
+            
+            # Run migrations
+            echo "🗄️ Running migrations..."
+            php artisan migrate --force
+            
+            # Optimize application
+            echo "⚡ Optimizing..."
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
+            
+            # Set permissions
+            echo "🔐 Setting permissions..."
+            chmod -R 775 storage bootstrap/cache
+            
+            echo "✅ Deployment completed!"
+            echo "🌐 https://portal.aderamadhana.com"
+
+      - name: ✅ Success Notification
+        if: success()
+        run: echo "::notice::Deployment successful! 🎉"
+          
+      - name: ❌ Failure Notification
+        if: failure()
+        run: echo "::error::Deployment failed! Check logs."
