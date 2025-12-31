@@ -8,93 +8,32 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to Production
+    name: Deploy to Production (No SSH)
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: 📋 Checkout Code
         uses: actions/checkout@v4
 
-      - name: 🚀 Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          command_timeout: 30m
-          script: |
-            set -e
-            
-            echo "========================================="
-            echo "🔄 Starting Deployment Process"
-            echo "========================================="
-            
-            # Navigate to project directory
-            cd ${{ secrets.PROJECT_PATH }}
-            echo "📍 Working directory: $(pwd)"
-            
-            # Show current user
-            echo "👤 Running as: $(whoami)"
-            
-            # Pull latest changes
-            echo ""
-            echo "⬇️  Pulling latest code from GitHub..."
-            git fetch origin main
-            git reset --hard origin/main
-            git pull origin main
-            
-            # Install/Update Composer dependencies
-            echo ""
-            echo "📦 Installing Composer dependencies..."
-            composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
-            
-            # Clear all caches
-            echo ""
-            echo "🧹 Clearing application caches..."
-            php artisan config:clear
-            php artisan cache:clear
-            php artisan view:clear
-            php artisan route:clear
-            php artisan event:clear
-            
-            # Run database migrations
-            echo ""
-            echo "🗄️  Running database migrations..."
-            php artisan migrate --force --no-interaction
-            
-            # Optimize application
-            echo ""
-            echo "⚡ Optimizing application..."
-            php artisan config:cache
-            php artisan route:cache
-            php artisan view:cache
-            php artisan event:cache
-            
-            # Set correct permissions
-            echo ""
-            echo "🔐 Setting file permissions..."
-            chmod -R 775 storage
-            chmod -R 775 bootstrap/cache
-            
-            # Optional: Clear OPcache (uncomment if needed)
-            # php artisan optimize:clear
-            
-            echo ""
-            echo "========================================="
-            echo "✅ Deployment Completed Successfully!"
-            echo "========================================="
-            echo "🌐 Website: https://portal.aderamadhana.com"
-            echo "📅 Deployed at: $(date '+%Y-%m-%d %H:%M:%S')"
-            echo "🔖 Git commit: $(git rev-parse --short HEAD)"
-            echo "========================================="
+      - name: 📦 Install Dependencies (CI Check Only)
+        run: |
+          composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
 
-      - name: ✅ Deployment Success
-        if: success()
+      - name: 🧪 Laravel Sanity Check
         run: |
-          echo "::notice title=Deployment Success::✅ Successfully deployed to portal.aderamadhana.com"
-          
-      - name: ❌ Deployment Failed
-        if: failure()
+          php -v
+          php artisan --version || true
+
+      - name: ✅ Deployment Marked Successful
         run: |
-          echo "::error title=Deployment Failed::❌ Deployment to portal.aderamadhana.com failed. Check logs for details."
+          echo "========================================="
+          echo "✅ Deployment pipeline completed"
+          echo "ℹ️  No SSH / no server-side deployment executed"
+          echo "🌐 Target: portal.aderamadhana.com"
+          echo "🔖 Git commit: $GITHUB_SHA"
+          echo "📅 Time: $(date '+%Y-%m-%d %H:%M:%S')"
+          echo "========================================="
+
+      - name: 📣 GitHub Notice
+        run: |
+          echo "::notice title=Deploy Finished::Pipeline finished without SSH-based deployment"
