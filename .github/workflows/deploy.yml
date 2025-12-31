@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -11,55 +12,89 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: 🚀 Deploy to portal.aderamadhana.com
+      - name: 📋 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🚀 Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
+          command_timeout: 30m
           script: |
-            echo "🔄 Starting deployment..."
+            set -e
             
-            # Navigate to project
+            echo "========================================="
+            echo "🔄 Starting Deployment Process"
+            echo "========================================="
+            
+            # Navigate to project directory
             cd ${{ secrets.PROJECT_PATH }}
+            echo "📍 Working directory: $(pwd)"
             
-            # Pull latest code
-            echo "⬇️ Pulling latest changes..."
+            # Show current user
+            echo "👤 Running as: $(whoami)"
+            
+            # Pull latest changes
+            echo ""
+            echo "⬇️  Pulling latest code from GitHub..."
+            git fetch origin main
+            git reset --hard origin/main
             git pull origin main
             
-            # Install dependencies
+            # Install/Update Composer dependencies
+            echo ""
             echo "📦 Installing Composer dependencies..."
-            composer install --no-dev --optimize-autoloader --no-interaction
+            composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
             
-            # Clear caches
-            echo "🧹 Clearing caches..."
+            # Clear all caches
+            echo ""
+            echo "🧹 Clearing application caches..."
             php artisan config:clear
             php artisan cache:clear
             php artisan view:clear
             php artisan route:clear
+            php artisan event:clear
             
-            # Run migrations
-            echo "🗄️ Running migrations..."
-            php artisan migrate --force
+            # Run database migrations
+            echo ""
+            echo "🗄️  Running database migrations..."
+            php artisan migrate --force --no-interaction
             
             # Optimize application
-            echo "⚡ Optimizing..."
+            echo ""
+            echo "⚡ Optimizing application..."
             php artisan config:cache
             php artisan route:cache
             php artisan view:cache
+            php artisan event:cache
             
-            # Set permissions
-            echo "🔐 Setting permissions..."
-            chmod -R 775 storage bootstrap/cache
+            # Set correct permissions
+            echo ""
+            echo "🔐 Setting file permissions..."
+            chmod -R 775 storage
+            chmod -R 775 bootstrap/cache
             
-            echo "✅ Deployment completed!"
-            echo "🌐 https://portal.aderamadhana.com"
+            # Optional: Clear OPcache (uncomment if needed)
+            # php artisan optimize:clear
+            
+            echo ""
+            echo "========================================="
+            echo "✅ Deployment Completed Successfully!"
+            echo "========================================="
+            echo "🌐 Website: https://portal.aderamadhana.com"
+            echo "📅 Deployed at: $(date '+%Y-%m-%d %H:%M:%S')"
+            echo "🔖 Git commit: $(git rev-parse --short HEAD)"
+            echo "========================================="
 
-      - name: ✅ Success Notification
+      - name: ✅ Deployment Success
         if: success()
-        run: echo "::notice::Deployment successful! 🎉"
+        run: |
+          echo "::notice title=Deployment Success::✅ Successfully deployed to portal.aderamadhana.com"
           
-      - name: ❌ Failure Notification
+      - name: ❌ Deployment Failed
         if: failure()
-        run: echo "::error::Deployment failed! Check logs."
+        run: |
+          echo "::error title=Deployment Failed::❌ Deployment to portal.aderamadhana.com failed. Check logs for details."
