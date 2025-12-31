@@ -14,6 +14,7 @@
 
   <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
 
+  <link rel="icon" href="{{ ('asset/favicon.ico') }}">
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
