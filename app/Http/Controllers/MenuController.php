@@ -28,29 +28,43 @@ class MenuController extends Controller
     
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'nama_menu' => 'required|array',
-            'deskripsi' => 'required|array',
-            'fitur' => 'required|array',
-            'tech_stack' => 'required|array',
-            'token_akses' => 'required|string|max:255',
-            'icon_menu' => 'required|image|mimes:png,jpg,jpeg|max:2048',
-            'status' => 'required|in:0,1',
-        ]);
+        try {
+            $validated = $request->validate([
+                'nama_menu' => 'required|array',
+                'deskripsi' => 'required|array',
+                'fitur' => 'required|array',
+                'tech_stack' => 'required|array',
+                'token_akses' => 'required|string|max:255',
+                'icon_menu' => 'required|image|mimes:png,jpg,jpeg|max:10000',
+                'status' => 'required|in:0,1',
+            ]);
 
-        $path = $request->file('icon_menu')->store('menu_icons', 'public');
+            $path = $request->file('icon_menu')->store('menu_icons', 'public');
 
-        $menu = new Menu();
-        $menu->setTranslations('nama_menu', $validated['nama_menu']);
-        $menu->setTranslations('deskripsi', $validated['deskripsi']);
-        $menu->setTranslations('fitur', $validated['fitur']);
-        $menu->tech_stack = $validated['tech_stack'] ?? [];
-        $menu->token_akses = $validated['token_akses'];
-        $menu->icon_menu = $path;
-        $menu->status = $validated['status'];
-        $menu->save();
+            $menu = new Menu();
+            $menu->setTranslations('nama_menu', $validated['nama_menu']);
+            $menu->setTranslations('deskripsi', $validated['deskripsi']);
+            $menu->setTranslations('fitur', $validated['fitur']);
+            $menu->tech_stack = $validated['tech_stack'] ?? [];
+            $menu->token_akses = $validated['token_akses'];
+            $menu->icon_menu = $path;
+            $menu->status = $validated['status'];
+            $menu->save();
 
-        return redirect()->route('menu.index')->with('success', 'Menu berhasil ditambahkan.');
+            return redirect()->route('menu.index')->with('success', 'Menu berhasil ditambahkan.');
+            
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            // Error validasi
+            return redirect()->back()
+                ->withErrors($e->validator)
+                ->withInput();
+                
+        } catch (\Exception $e) {
+            // Error lainnya (database, file upload, dll)
+            return redirect()->back()
+                ->with('error', 'Gagal menambahkan menu: ' . $e->getMessage())
+                ->withInput();
+        }
     }
 
     public function save_profil(Request $request)
